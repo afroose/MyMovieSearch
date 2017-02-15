@@ -18,36 +18,27 @@ $('body').on('click','.js-close-thumbnail',function (event) {
 });
 
 // Create the API url variable = endpoint
-var YOUTUBE_BASE_URL = "https://www.googleapis.com/youtube/v3/search";
+var GUIDEBOX_SEARCH_BASE_URL = "http://api-public.guidebox.com/v2/search";
 
-function getDataFromAPI(searchTerm, callback) {
+function getTitleDataFromAPI(searchTerm, callback) {
     var query = {
-        part: 'snippet',
-        key: 'AIzaSyBJLEg8YkdX6NcE0qn0TPQejmIdsnNGVBM',
-        q: searchTerm,
-        maxResults: 6
+        type: 'movie',
+        field: 'title',
+        query: searchTerm,
+        api_key: '65fd44fa012e778f220d1e1c8f8dd0f2642fb87d',
+        //maxResults: 6
     }
     console.log(query);
-    $.getJSON(YOUTUBE_BASE_URL, query, callback);
+    $.getJSON(GUIDEBOX_SEARCH_BASE_URL, query, callback);
     console.log(callback);
 }
 
-function displayYOUTUBESearchData(data){
+function displayGUIDEBOXTITLESearchData(data){
     var resultElement = '';
-    if (data.items) {
-        data.items.forEach(function(item) {
-            resultElement += '<div class="js-search-thumbnail">' +
-            '<a href="#" class="js-activate-thumbnail"><img src="' + item.snippet.thumbnails.medium.url + '" class="js-video-thumbnail"/></a>' +
-            '<div class="js-search-title">' + item.snippet.title + '.</div>' +
-            '<div class="js-search-channel">Click <a href="https://www.youtube.com/channel/' + item.snippet.channelId + '" target="_blank">here</a> for more from ' + item.snippet.channelTitle + '.</div>' +
-            '<div id="js-overlay__' + item.id.videoId + '" class="overlay">' +
-            '<div class="inner-overlay">' +
-            '<iframe id="video-' + item.id.videoId + '" width="854" height="480" src="https://www.youtube.com/embed/' + item.id.videoId + '?enablejsapi=1&amp;rel=0" frameborder="0" style="border: solid 4px #37474F"></iframe>' +		 
-            '<p>click here to [<a href="#" class="js-close-thumbnail" data-id="js-overlay__' + item.id.videoId + '">close</a>]</p>' +
-            '</div>' +
-            '</div>' +
-            '</div>';
-            //resultElement += '<p>' + item.snippet.title + '</p>';
+    if (data.results) {
+        data.results.forEach(function(item) {
+            //resultElement += '<div class="js-search-thumbnail">' + item.snippet.thumbnails.medium.url + '</div>';
+            resultElement += '<p>' + item.title + ' - ' + item.id + '</p>';
     });
   }
     else {
@@ -61,7 +52,7 @@ function watchSubmit() { // pass argument from search box
         event.preventDefault();
         var query = $(this).find('.js-query').val();
         //alert(query);
-        getDataFromAPI(query, displayYOUTUBESearchData);
+        getTitleDataFromAPI(query, displayGUIDEBOXTITLESearchData);
     });
 }
 // Create function to submit search terms  - callback function
