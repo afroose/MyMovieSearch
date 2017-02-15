@@ -38,13 +38,13 @@ function displayGUIDEBOXTITLESearchData(data){
     if (data.results) {
         data.results.forEach(function(item) {
             //resultElement += '<div class="js-search-thumbnail">' + item.snippet.thumbnails.medium.url + '</div>';
-            resultElement += '<p>' + item.title + ' - ' + item.id + '</p>';
+            resultElement += '<li>' + item.title + ' - <button class="js-select-movie" data-id=">' + item.id + '"/>Select movie</button></li>';
     });
   }
     else {
         resultElement += '<p>No result</p>'
     }
-  $('.js-search-results').html(resultElement);
+  $('.js-search-results').html('<ul>' + resultElement + '</ul>');
 }
 
 function watchSubmit() { // pass argument from search box
