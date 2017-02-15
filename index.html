@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Capstone - MyMovieSearch</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>  
+
+<main>         
+  <div class="nojs-warning">
+    <p class="warning-text">This page requires JavaScript to run. Please make sure you have <a href="http://enable-javascript.com">enabled JavaScript</a> to play. If JavaScript is on and you still see this message, please <a href="mailto:arnaud.roose@gmail.com?subject=MyMovieSearch - javascript is not loading properly." target="_blank">contact Arnaud</a>.</p>
+  </div>
+
+  <div class="container">
+    <h1>Search the Movie Database</h1>
+    <form action="#" class="js-search-form">
+      <label for="query"></label>
+      <input type="text" class="js-query">
+      <button type="submit">Find Movie</button>
+    </form>
+
+    <div class="js-search-results">
+      <!--<div class="js-search-thumbnail">
+        <a href="#" class="js-activate-thumbnail"><img src="https://i.ytimg.com/vi/4kSGkGKwp9U/mqdefault.jpg" class="js-video-thumbnail" /></a>
+        <div class="js-search-title">Westworld</div>
+        <div class="js-search-channel">Click <a href="https://www.youtube.com/channel/UCJkMlOu7faDgqh4PfzbpLdg" target="_blank">here</a> for more from this channel</div>
+        
+        <div id="js-overlay__4kSGkGKwp9U" class="overlay">
+          <div class="inner-overlay">
+            <iframe id="video-4kSGkGKwp9U" width="854" height="480" src="https://www.youtube.com/embed/4kSGkGKwp9U?enablejsapi=1&amp;rel=0" frameborder="0" style="border: solid 4px #37474F"></iframe>			 
+            <p>click here to [<a href='#' class="js-close-thumbnail" data-id="js-overlay__4kSGkGKwp9U">close</a>]</p>
+          </div>
+        </div>
+      </div>-->
+    </div>
+
+  </div>  
+</main>
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+   <!-- Grab local copy of jQuery for use in the failsafe script -->
+   <!--<script> window.jQuery || document.write('<script src="js/vendor/jquery-1.12.4.min.js">\x3C/script>')</script>-->
+  <script src="app.js"></script>
+
+</body>
+</html>
