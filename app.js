@@ -21,8 +21,8 @@ $('body').on('click','.js-close-thumbnail',function (event) {
 // *** Block for movie ID search portion **************
 // *** Create the API url variable = endpoint ******
 
-const GUIDEBOX_SEARCH_BASE_URL = "http://api-public.guidebox.com/v2/search"; // Link for movie ID search
-const GUIDEBOX_MOVIE_BASE_URL = "http://api-public.guidebox.com/v2/movies/"; // link for movie info
+const GUIDEBOX_SEARCH_BASE_URL = "https://api-public.guidebox.com/v2/search"; // Link for movie ID search
+const GUIDEBOX_MOVIE_BASE_URL = "https://api-public.guidebox.com/v2/movies/"; // link for movie info
 
 const getTitleDataFromAPI = (searchTerm, callback) => {
     const query = {
