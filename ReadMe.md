@@ -31,3 +31,7 @@ App steps:
     - free
     - rental
     - purchase
+
+    https://www.themoviedb.org/documentation/api
+    https://api.guidebox.com/docs#movies
+    https://find.media/movie/splash
