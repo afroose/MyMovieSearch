@@ -39,21 +39,23 @@ const getTitleDataFromAPI = (searchTerm, callback) => {
 
 const displayGUIDEBOXTITLESearchData = (data) => {
     let resultElement = '';
-    if (data.results) {
+    if (data.total_results > 0) {
         data.results.forEach( (item) => {
             //resultElement += '<div class="js-search-thumbnail">' + item.snippet.thumbnails.medium.url + '</div>';
-            resultElement += `<div class="js-movie-search-thumbnail">
-        <a href="#" class="js-movie-thumbnail"><img src="${item.poster_120x171}" class="js-movie-thumbnail" /></a>
-        <div class="js-movie-search-title">${item.title}</div>
-        <div><button class="js-select-movie" data-id="${item.id}">Select movie</button></li></div>
-      </div>`;
-    });
-  }
-    else {
-        resultElement += `<p>No result</p>`
-    }
-  $('.js-movie-search-results').html(`${resultElement}`);
-  $('.movie-result-container').toggle();
+            resultElement += 
+            `<div class="js-movie-search-thumbnail">
+                <a href="#" class="js-movie-thumbnail"><img src="${item.poster_120x171}" class="js-movie-thumbnail" /></a>
+                <div class="js-movie-search-title">${item.title}</div>
+                <div><button class="js-select-movie" data-id="${item.id}">Select movie</button></li></div>
+            </div>`;
+            });
+        }
+        else {
+            resultElement += `<p>No result</p>`
+            //alert("no result");
+        };
+    $('.js-movie-search-results').html(`${resultElement}`);
+    $('.movie-result-container').toggle();
 }
 
 $('body').on('click','.js-select-movie', (event) => {
@@ -104,8 +106,9 @@ const displayGUIDEBOXMovieInfo = (data) => {
         reviewElement += 
            `<div class="js-movie-review-thumbnail">
                 <a href="#" class="js-movie-review-thumbnail"><img src="${data.poster_240x342}" class="js-movie-thumbnail" /></a>
-                <div class="js-movie-review-title">${data.title}</div>
-            </div>`;
+            </div>
+            <div class="js-movie-review-title"><h1>${data.title}</h1></div>
+            `;
         overviewElement += 
             `<div class="js-movie-review-overview">
                 <p>${data.overview}</p>
@@ -181,13 +184,13 @@ const displayGUIDEBOXTrailerData = (data) => {
             trailerElement += `
             <div id="js-overlay__${item.id}" class="overlay">
                 <div class="inner-overlay">	
-                    <iframe id="video-${item.id} width="900" height="600" src="${videoElement}" frameborder="0" style="border: solid 4px #37474F"></iframe>	
+                    <iframe id="video-${item.id}" src="${videoElement}" frameborder="0" style="border: solid 4px #37474F"></iframe>	
                     <p>click here to [<a href="#" class="js-close-thumbnail" data-id="js-overlay__${item.id}">close</a>]</p>
                 </div>
             </div>
             `;
             buttonElement += `
-            <a data-id="js-overlay__${item.id}" href="${videoElement}" target="_blank">Watch the trailer</a>
+            <button class="js-activate-thumbnail" data-id="js-overlay__${item.id}">Watch the trailer</button>
             `;
 
         });
@@ -196,7 +199,7 @@ const displayGUIDEBOXTrailerData = (data) => {
         trailerElement += '<p>No result</p>'
         buttonElement = '';
     }
-  //$('.movie-trailer').html(`${trailerElement}`);
+  $('.movie-trailer').html(`${trailerElement}`);
   $('.movie-trailer-button').html(`${buttonElement}`);
 }
 
@@ -221,6 +224,6 @@ function watchSubmit() { // pass argument from search box
 // Create function to submit search terms  - callback function
 
 $(function(){
-    $('.nojs-warning').remove(); // removes div containing "no js" warning
+    //$('.nojs-warning').remove(); // removes div containing "no js" warning
     watchSubmit();
 });

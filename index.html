@@ -7,23 +7,24 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <link rel="stylesheet" href="main.css">
 </head>
-<body>  
+<body> 
+
+  <header>
+    <div class="search-container">
+      <form action="#" class="js-search-form">
+        <label for="query"><span class="search-title">MyMovie Search</span></label>
+        <input id="searchbar" type="search" class="js-query" autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false">
+        <button type="submit" class="seach-form-button">Search</button>
+      </form>
+    </div> 
+  </header>
 
 <main>         
-  <div class="nojs-warning">
+  <!--<div class="nojs-warning">
     <p class="warning-text">This page requires JavaScript to run. Please make sure you have <a href="http://enable-javascript.com">enabled JavaScript</a> to play. If JavaScript is on and you still see this message, please <a href="mailto:arnaud.roose@gmail.com?subject=MyMovieSearch - javascript is not loading properly." target="_blank">contact Arnaud</a>.</p>
-  </div>
+  </div>-->
 
-  <section class="search-container">
-    <h1>Search the Movie Database</h1>
-    <form action="#" class="js-search-form">
-      <label for="query"></label>
-      <input type="text" class="js-query">
-      <button type="submit">Find Movie</button>
-    </form>
-  </section> 
-
-  <section class="movie-result-container" style="display: none;">
+  <section class="movie-result-container">
     <div class="js-movie-search-results">
     </div>
   </section>
@@ -35,7 +36,7 @@
     </div>
     <div class="movie-overview">
     </div>
-    <div class="movie-trailer">
+    <div id="fancybox-movie-trailer" class="movie-trailer">
     </div>
   </section>
 
@@ -50,6 +51,11 @@
    <!-- Grab local copy of jQuery for use in the failsafe script -->
    <!--<script> window.jQuery || document.write('<script src="js/vendor/jquery-1.12.4.min.js">\x3C/script>')</script>-->
   <script src="app.js"></script>
+  
+  <script type="text/javascript">
+	$(document).ready(function() {
+	});
+  </script>
 
 </body>
 </html>
